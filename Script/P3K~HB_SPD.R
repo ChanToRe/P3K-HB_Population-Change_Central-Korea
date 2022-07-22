@@ -1,17 +1,22 @@
 library(rcarbon)
+# P3K : Proto Three Kingdom period of Korea peninsula
+# HB : Bakje(Hanseong period)
 
-#Data Load
+# Data Load
 data <- read.csv("/Users/jch/Desktop/P3K~Bakje(Hanseong) central region demography/Code/Data/Korea_CR_14C.csv")
 
-#Data Processing
+# Data Processing
 caldates <- calibrate(x=data$BP, errors=data$Error, calCurves="intcal20", normalised=FALSE, verbose=FALSE)
 bins <- binPrep(sites=data$Site, ages=data$BP, h=100)
 
-# Make SPD(raw, rollin-mean : 50)
-spd.raw <- spd(x=caldates, bins, timeRange =c(2200, 1200))
-plot(spd.raw, lwd=2) +
-  title("SPD(Raw)")
+# Make SPD(raw)
+spd.raw <- spd(x=caldates, bins=bins, timeRange=c(2200, 1200))
 
+# Make SPD(rollin-mean : 50)
 spd.rol <- spd(x=caldates, bins=bins, timeRange=c(2200, 1200), runm=50)
-plot(spd.rol, lwd=2) +
-  title("SPD(rolling-mean : 50)")
+
+#Plot
+plot(spd.rol, calendar = "BCAD")
+plot(spd.raw, add=TRUE, calendar="BCAD", type="simple", col="black", lwd=1, lty=2)
+title("SPD(P3K~HB)")
+legend("topleft",legend=c("Observed SPD", "Rolling-Mean : 50"),col=c(1,"grey"),lty=c(2,1),lwd=c(1,5),cex=0.8,bg="white")
