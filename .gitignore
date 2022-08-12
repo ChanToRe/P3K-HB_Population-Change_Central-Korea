@@ -1,0 +1,6 @@
+#Ignore Files
+*.hwp
+
+#Ignore Folders
+Lecture/
+References/
