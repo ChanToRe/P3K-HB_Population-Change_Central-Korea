@@ -1,5 +1,6 @@
 #Ignore Files
 *.hwp
+*.xlsx
 
 #Ignore Folders
 Lecture/
