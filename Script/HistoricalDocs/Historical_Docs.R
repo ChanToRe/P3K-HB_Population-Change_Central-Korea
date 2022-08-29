@@ -1,6 +1,6 @@
-df <- read.csv("/Users/jch/Desktop/LiteratureMaster.csv")
+df <- read.csv("/Users/jch/Documents/github/P3K-HB_Demography/Data/Korea_CR_HistoricalDocs.csv")
 
-tiff(file="/Users/jch/Desktop/P3K~Bakje(Hanseong) central region demography/Code/Graph/HisDocs.png", units='in', res=300, width=7, height=5)
+tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Demographics(Historical Docs).tiff", units='in', res=300, width=7, height=5)
 plot(df$Median_age, df$戶, xlab="Years BC/AD", ylab="Number of Population", xlim=c(-250, 750), ylim=c(0, 170000))
 title(main="Demographics(Historical Documents)")
 arrows(233, 120000, 266, 120000, angle=90, length = 0.1, code=3)
