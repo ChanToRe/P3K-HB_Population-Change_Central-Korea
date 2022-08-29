@@ -37,7 +37,7 @@ double_exp <- nimbleCode({
   }
   r1 ~ dnorm(0, sd=0.0004);
   r2 ~ dexp(1/0.0004);
-  chp ~ T(dnorm(1550, sd=50), 1200, 2200); 
+  chp ~ T(dnorm(1700, sd=100), 1200, 2200); 
   changept <- round(chp);
 })
 
@@ -47,7 +47,7 @@ constants <- list(N=length(obs.caldates), calBP=intcal20$CalBP, C14BP=intcal20$C
 data <- list(X=obs.data$CRA, sigma=obs.data$Error)
 
 # Define Initialisation Function
-initsFunction.double_exp <- function() list(r1=rnorm(1, sd=0.0004), r2=rexp(1, 1/0.0004), chp=round(rtruncnorm(1, mean=1550, a=1200, b=2200)), theta=as.numeric(obs.data$MedCalDate))
+initsFunction.double_exp <- function() list(r1=rnorm(1, sd=0.0004), r2=rexp(1, 1/0.0004), chp=round(rtruncnorm(1, mean=1700, sd=100, a=1200, b=2200)), theta=as.numeric(obs.data$MedCalDate))
 
 # Run MCMC ####
 mcmc.double_exp.samples<- nimbleMCMC(code=double_exp, constants=constants, data=data, niter=10000, nchains=3, thin=6, nburnin=1000, summary=FALSE, monitors=c('r1', 'r2', 'chp', 'theta'), WAIC=TRUE, samplesAsCodaMCMC=TRUE, inits=initsFunction.double_exp, setSeed=c(1, 2, 3))
@@ -56,7 +56,7 @@ mcmc.double_exp.samples<- nimbleMCMC(code=double_exp, constants=constants, data=
 gelman.diag(mcmc.double_exp.samples$samples)$psrf[1:3,]
 
 # Plot
-tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/MarginalPosteriorDistributions.png", units='in', res=300, width=8, height=3)
+tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/MarginalPosteriorDistributions.tiff", units='in', res=300, width=8, height=3)
 par(mfrow=c(1,3))
 postHPDplot(mcmc.double_exp.samples$samples$chain1[, 'r1'], xlab='', ylab='', show.hpd.val=FALSE) +
   title(main="dExp-model:r1", cex=1.2)
@@ -64,7 +64,7 @@ postHPDplot(mcmc.double_exp.samples$samples$chain1[, 'r1'], xlab='', ylab='', sh
 postHPDplot(mcmc.double_exp.samples$samples$chain1[, 'r2'], xlab='', ylab='', show.hpd.val=FALSE)
   title(main="dExp-model:r2", cex=1.2)
   mtext(TeX('$r_2$'),side = 1,line=1.5,cex = 1, padj=1)
-postHPDplot(abs(round(BPtoBCAD(mcmc.double_exp.samples$samples$chain1[, 'chp']))), xlab='', ylab='', show.hpd.val=FALSE, xlim=c(200, 350))
+postHPDplot(abs(round(BPtoBCAD(mcmc.double_exp.samples$samples$chain1[, 'chp']))), xlab='', ylab='', show.hpd.val=FALSE, xlim=c(150, 350))
   title(main="dExp-model:c", cex=1.2)
   mtext(TeX('$AD$'),side = 1,line=1.5,cex = 1, padj=1)
 dev.off()
@@ -76,7 +76,7 @@ params.double_exp <- list(r1 = c(mcmc.double_exp.samples$samples$chain1[, 'r1'],
                           mu = round(c(mcmc.double_exp.samples$samples$chain1[, 'chp'], mcmc.double_exp.samples$samples$chain2[, 'chp'], mcmc.double_exp.samples$samples$chain3[, 'chp'])))
 pp.check.double_exp.cal <- postPredSPD(obs.data$CRA, obs.data$Error, calCurve = 'intcal20', model = dDoubleExponentialGrowth, a = 2200, b=1200, params=params.double_exp, nsim = 500, ncores = 5, verbose=FALSE, method='calsample')
 
-tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Demographics(dExp_model).png", units='in', res=300, width=7, height=5)
+tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Demographics(dExp_model).tiff", units='in', res=300, width=7, height=5)
 par(mfrow=c(1, 1))
 plot(pp.check.double_exp.cal, interval = 0.95,calendar='BCAD')
   title(main="dExp-model", cex=1.2)
