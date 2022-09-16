@@ -7,6 +7,10 @@ library(patchwork)
 korea <- shapefile('/Users/jch/Documents/github/P3K-HB_Demography/Lecture/MA1-1 Report/GIS/Vector/KOR_adm/KOR_adm1.shp')
 test_before <- read.csv('/Users/jch/Desktop/test_before.csv')
 test_after <- read.csv('/Users/jch/Desktop/test_after.csv')
+StrongSettle <- read.csv('/Users/jch/Documents/github/P3K-HB_Demography/Data/StrongholdsSettlement.csv')
+StrongSettle_before <- subset(StrongSettle, type == "before")
+StrongSettle_after <- subset(StrongSettle, type == "after")
+StrongSettle_central <- subset(StrongSettle, Site == "서울 풍납토성")
 
 # Point Plot
 # Before A.D. 250
@@ -31,6 +35,7 @@ before_kde <- ggplot() +
     geom_polygon(data=korea, aes(x=long, y=lat, group=group), fill='white', color='black') +  
     coord_map(xlim=c(126, 129.5), ylim=c(36.8, 38.525)) +
     stat_density_2d_filled(data=test_before, aes(x=X, y=Y, alpha=..level..), n=150) +
+    geom_point(data=StrongSettle_before, aes(x=StrongSettle_before$X, y=StrongSettle_before$Y), fill='black', color='black', shape=22, size=2.5) +
     ggtitle('KDE(Before A.D. 250)') +
     labs(alpha="level", fill="level")
 # After A.D. 250
@@ -38,6 +43,8 @@ after_kde <- ggplot() +
     geom_polygon(data=korea, aes(x=long, y=lat, group=group), fill='white', color='black') +  
     coord_map(xlim=c(126, 129.5), ylim=c(36.8, 38.525)) +
     stat_density2d_filled(data=test_after, aes(x=test_after$X, y=test_after$Y, alpha=..level..), n=150) +
+    geom_point(data=StrongSettle_after, aes(x=StrongSettle_after$X, y=StrongSettle_after$Y), fill='black', color='black', shape=22, size=2.5) +
+    geom_point(data=StrongSettle_central, aes(x=StrongSettle_central$X, y=StrongSettle_central$Y), fill='red', color='black', shape=22, size=3) +
     ggtitle('KDE(After A.D. 250)') +
     labs(alpha="level", fill="level")
 before_kde + after_kde
