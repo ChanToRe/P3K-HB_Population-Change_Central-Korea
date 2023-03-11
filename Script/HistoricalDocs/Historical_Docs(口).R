@@ -1,0 +1,11 @@
+df <- read.csv("/Users/jch/Documents/github/P3K-HB_Demography/Data/Docs_Master.csv")
+
+tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/PopulationNum(Historical Docs).tiff", units='in', res=300, width=7, height=5)
+plot(df$Median_age, df$口, xlab="Years BC/AD", ylab="Number of Population", xlim=c(-250, 750), ylim=c(0, 300000))
+arrows(175, 152300, 300, 152300, angle=90, length = 0.1, code=3)
+points(df$Median_age, df$口, pch=19, cex=1.5)
+rect(300, -15000, 900, 350000, col=adjustcolor("grey", alpha=0.4), lwd="0")
+rect(-148, 161923, -5, 302261, lty=2, lwd="1")
+text(543, 155000, "Unknown")
+text(-148, 147923, "Except")
+dev.off()
