@@ -1,4 +1,12 @@
-df <- read.csv("/Users/jch/Documents/github/P3K-HB_Demography/Data/Bakje_WarRecords.csv")
+library(showtext)
+library(sysfonts)
+library(here)
+
+#font_add_google('Nanum Gothic', family='NanumGothic')
+#showtext_auto()
+#par(family="NanumGothic")
+
+df <- read.csv(here("./Data/Bakje_WarRecords.csv"))
 
 win <- subset(df, df$`승패` == "승리")
 lose <- subset(df, df$'승패' == "패배")
@@ -13,7 +21,7 @@ rug(win$`날짜`, ticksize = 1, side = 1, lwd = 1, col = "red")
 rug(lose$'날짜', ticksize = 1, side = 1, lwd = 1, col = "blue")
 rug(unknown$'날짜', ticksize = 1, side = 1, lwd = 1, col = "black")
 
-tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Bakje_WarRecords.tiff", units='in', res=300, width=10, height=3)
+tiff(file=here("./Graph/Bakje_WarRecords.tiff"), units='in', res=300, width=10, height=3)
 plot(~win$`날짜`, col = "red", pch = 21, xlim = c(-50, 700))
 par(new = T)
 plot(~unknown$`날짜`, col = "black", pch = 21, xlim = c(-50, 700))

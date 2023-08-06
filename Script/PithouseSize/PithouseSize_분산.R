@@ -1,6 +1,14 @@
 library(rcarbon)
+library(here)
+library(showtext)
+library(sysfonts)
+library(here)
 
-df <- read.csv("/Users/jch/Documents/github/P3K-HB_Demography/Data/C14_Master.csv")
+#font_add_google('Nanum Gothic', family='NanumGothic')
+#showtext_auto()
+#par(family="NanumGothic")
+
+df <- read.csv(here("./Data/C14_Master.csv"))
 
 df <- df[!(df$Size.cm2. == "X" ), ]
 df <- df[!(df$Size.cm2. == "" ), ]
@@ -47,7 +55,7 @@ step8_box_1 <- as.numeric(step8_df_1$Size.cm2.)
 step9_box_1 <- as.numeric(step9_df_1$Size.cm2.)
 step10_box_1 <- as.numeric(step10_df_1$Size.cm2.)
 
-tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Boxplot(Pithouse Size - 방형).tiff", units='in', res=300, width=7, height=4)
+tiff(file=here("./Graph/Boxplot(Pithouse Size - 방형).tiff"), units='in', res=300, width=7, height=4)
 boxplot(step1_box_1, step2_box_1, step3_box_1, step4_box_1, step5_box_1, step6_box_1, step7_box_1, step8_box_1, step9_box_1, step10_box_1)
 title(xlab="Phase", col.lab="black")
 title(ylab="Size", col.lab="black")
@@ -87,7 +95,7 @@ step8_box_2 <- as.numeric(step8_df_2$Size.cm2.)
 step9_box_2 <- as.numeric(step9_df_2$Size.cm2.)
 step10_box_2 <- as.numeric(step10_df_2$Size.cm2.)
 
-tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Boxplot(Pithouse Size - 여철자형).tiff", units='in', res=300, width=7, height=4)
+tiff(file=here("./Graph/Boxplot(Pithouse Size - 여철자형).tiff"), units='in', res=300, width=7, height=4)
 boxplot(step1_box_2, step2_box_2, step3_box_2, step4_box_2, step5_box_2, step6_box_2, step7_box_2, step8_box_2, step9_box_2, step10_box_2)
 title(xlab="Phase", col.lab="black")
 title(ylab="Size", col.lab="black")

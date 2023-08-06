@@ -1,6 +1,14 @@
 library(rcarbon)
+library(here)
+library(showtext)
+library(sysfonts)
+library(here)
 
-df <- read.csv("/Users/jch/Documents/github/P3K-HB_Demography/Data/C14_Master.csv")
+#font_add_google('Nanum Gothic', family='NanumGothic')
+#showtext_auto()
+#par(family="NanumGothic")
+
+df <- read.csv(here("./Data/C14_Master.csv"))
 
 df <- df[!(df$Size.cm2. == "X" ), ]
 df <- df[!(df$Size.cm2. == "" ), ]
@@ -59,7 +67,7 @@ barname <- c("-2C", "", "-1C", "", "1C", "", "2C", "", "3C", "",
              "4C", "", "5C", "", "6C", "", "7C", "", "8C", "")
 bardata <- data.frame(barname, barsize)
 
-tiff(file="/Users/jch/Documents/github/P3K-HB_Demography/Graph/Demographics(Pithouse Size 50).tiff", units='in', res=300, width=7, height=5)
+tiff(file=here("./Graph/Demographics(Pithouse Size 50).tiff"), units='in', res=300, width=7, height=5)
 barplot(bardata$barsize, space=0, names.arg = bardata$barname)
 title(xlab="Phase", col.lab="black")
 title(ylab="Number of Population", col.lab="black")

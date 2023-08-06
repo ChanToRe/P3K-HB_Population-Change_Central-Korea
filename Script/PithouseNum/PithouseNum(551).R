@@ -1,10 +1,12 @@
 library(showtext)
 library(sysfonts)
-font_add_google('Nanum Gothic', family='NanumGothic')
-showtext_auto()
-par(family="NanumGothic")
+library(here)
 
-df <- read.csv("/Users/jch/Documents/github/P3K-HB_Demography/Data/Pithouse_Master.csv")
+#font_add_google('Nanum Gothic', family='NanumGothic')
+#showtext_auto()
+#par(family="NanumGothic")
+
+df <- read.csv(here("./Data/Pithouse_Master.csv"))
 df <- na.omit(df)
 
 P3K1 <- sum(df$`원삼국1`)
