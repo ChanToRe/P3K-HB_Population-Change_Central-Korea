@@ -61,7 +61,7 @@ mcmc.double_exp.samples<- nimbleMCMC(code=double_exp, constants=constants, data=
 gelman.diag(mcmc.double_exp.samples$samples)$psrf[1:3,]
 
 # Plot
-tiff(file=here("./Graph/dexp_HPD(중도문화권).tiff"), units='in', res=300, width=8, height=3)
+tiff(file=here("./Graph/Fig3-5(2)_dexp_HPD(중도문화권).tiff"), units='in', res=300, width=8, height=3)
 par(mfrow=c(1,3))
 postHPDplot(mcmc.double_exp.samples$samples$chain1[, 'r1'], xlab='', ylab='', show.hpd.val=FALSE)
 title(main="중도문화권(dExp-model):r1", cex=1.2)
@@ -81,13 +81,13 @@ params.double_exp <- list(r1 = c(mcmc.double_exp.samples$samples$chain1[, 'r1'],
                           mu = round(c(mcmc.double_exp.samples$samples$chain1[, 'chp'], mcmc.double_exp.samples$samples$chain2[, 'chp'], mcmc.double_exp.samples$samples$chain3[, 'chp'])))
 pp.check.double_exp.cal <- postPredSPD(obs.data$CRA, obs.data$Error, calCurve = 'intcal20', model = dDoubleExponentialGrowth, a = 2200, b=1200, params=params.double_exp, nsim = 500, ncores = 10, verbose=FALSE, method='calsample')
 
-tiff(file=here("./Graph/dexp_model(중도문화권).tiff"), units='in', res=300, width=7, height=5)
+tiff(file=here("./Graph/Fig3-6(2)_dexp_model(중도문화권).tiff"), units='in', res=300, width=7, height=5)
 par(mfrow=c(1, 1))
 plot(pp.check.double_exp.cal, interval = 0.95,calendar='BCAD')
 legend('topleft',legend=c('95% Prediction Interval','Positive Deviation','Negative Deviation','Observed SPD'),lwd=c(5,5,5,2),col=c('lightgrey','red','blue','black'),bty='n', cex=c(1, 1, 1, 1))
 dev.off()
 
-tiff(file=here("./Graph/dexp_fit(중도문화권).tiff"), units='in', res=300, width=7, height=7)
+tiff(file=here("./Graph/NotUsed/dexp_fit(중도문화권).tiff"), units='in', res=300, width=7, height=7)
 par(mfrow=c(1, 1))
 postHPDplot(postPredCor(pp.check.double_exp.cal), xlab="중도문화권 PCC",ylab='Density',xlim=c(0,1))
 dev.off()
