@@ -9,84 +9,99 @@
 
 [주찬혁, 2023, ｢원삼국시대~백제 한성기 중부지역의 인구변동과 배경｣, 숭실대학교 석사학위논문.]()
 
-레포지토리는 크게 3개의 디렉토리로 구성되어 있습니다. `Data`에는 연구에 사용된 데이터가 있고, `Script`에는 분석 및 그래프 산출을 위한 R코드가 있으며, `Graph`에는 최종적으로 산출된 도면이 있습니다. `Script`는 각 분석에 따라 주거지 개수:`PithouseNum`, 주거지 면적:`PithouseSize`, SPD 및 베이지안 모델:`SPD` 디렉토리로 구분됩니다. 마지막으로 `SPD`는 분석조건에 따라 중부지역 전체:`By_All`, 문화권별:`By_Cultural`, 지역별:`By_Area`로 구분됩니다.
+레포지토리는 크게 3개의 디렉토리로 구성되어 있습니다. `Data`에는 연구에 사용된 데이터가 있고, `Script`에는 분석 및 그래프 산출을 위한 R코드가 있으며, `Graph`에는 최종적으로 산출된 도면이 있습니다. `Script`는 각 분석에 따라 주거지 개수:`PithouseNum`, 주거지 면적:`PithouseSize`, SPD 및 베이지안 모델:`SPD` 디렉토리로 구분됩니다. 마지막으로 `SPD`는 분석조건에 따라 중부지역 전체:`By_All`, 문화권별:`By_Cultural`, 지역별:`By_Area`로 구분됩니다. 본문에 사용하지 않은 그래프 및 스크립트는 각 `NotUsed` 폴더에 존재합니다.
 
 ---
 
 ## 파일구조
 
 ```
-📦P3K-HB_Demography
+📦P3K-HB_Population-Change_Central-Korea
  ┣ 📂Data
  ┃ ┣ 📜Bakje_WarRecords.csv
  ┃ ┣ 📜C14_Master.csv
  ┃ ┣ 📜Goguryeo_Defense.csv
  ┃ ┗ 📜Pithouse_Master.csv
  ┣ 📂Graph
- ┃ ┣ 📜Bakje_WarRecords.tiff
- ┃ ┣ 📜Boxplot(Pithouse Size - 방형).tiff
- ┃ ┣ 📜Boxplot(Pithouse Size - 여철자형).tiff
- ┃ ┣ 📜dexp_fit(경기남부+호서북부).tiff
- ┃ ┣ 📜dexp_fit(경기북부+영서).tiff
- ┃ ┣ 📜dexp_fit(마한문화권).tiff
- ┃ ┣ 📜dexp_fit(중도문화권).tiff
- ┃ ┣ 📜dexp_fit(중부지역).tiff
- ┃ ┣ 📜dexp_fit(한강중류).tiff
- ┃ ┣ 📜dexp_fit(한강하류).tiff
- ┃ ┣ 📜dexp_HPD(경기남부+호서북부).tiff
- ┃ ┣ 📜dexp_HPD(경기북부+영서).tiff
- ┃ ┣ 📜dexp_HPD(마한문화권).tiff
- ┃ ┣ 📜dexp_HPD(중도문화권).tiff
- ┃ ┣ 📜dexp_HPD(중부지역).tiff
- ┃ ┣ 📜dexp_HPD(한강중류).tiff
- ┃ ┣ 📜dexp_HPD(한강하류).tiff
- ┃ ┣ 📜dexp_model(경기남부+호서북부).tiff
- ┃ ┣ 📜dexp_model(경기북부+영서).tiff
- ┃ ┣ 📜dexp_model(마한문화권).tiff
- ┃ ┣ 📜dexp_model(중도문화권).tiff
- ┃ ┣ 📜dexp_model(중부지역).tiff
- ┃ ┣ 📜dexp_model(한강중류).tiff
- ┃ ┣ 📜dexp_model(한강하류).tiff
- ┃ ┣ 📜Pithouse Num(475).tiff
- ┃ ┣ 📜Pithouse Num(551).tiff
- ┃ ┣ 📜Pithouse Num(551Fix).tiff
- ┃ ┣ 📜SiteMap.tiff
- ┃ ┣ 📜SPD(경기남부+호서북부).tiff
- ┃ ┣ 📜SPD(경기북부+영서).tiff
- ┃ ┣ 📜SPD(마한문화권).tiff
- ┃ ┣ 📜SPD(중도문화권).tiff
- ┃ ┣ 📜SPD(중부지역).tiff
- ┃ ┣ 📜SPD(한강중류).tiff
- ┃ ┣ 📜SPD(한강하류).tiff
- ┃ ┗ 📜토기가마 분포와 인구분포.png
+ ┃ ┣ 📂NotUsed
+ ┃ ┃ ┣ 📜Demographics(Pithouse Size - 100y).tiff
+ ┃ ┃ ┣ 📜Demographics(Pithouse Size 50).tiff
+ ┃ ┃ ┣ 📜dexp_fit(경기남부+호서북부).tiff
+ ┃ ┃ ┣ 📜dexp_fit(경기북부+영서).tiff
+ ┃ ┃ ┣ 📜dexp_fit(마한문화권).tiff
+ ┃ ┃ ┣ 📜dexp_fit(신라제외).tiff
+ ┃ ┃ ┣ 📜dexp_fit(중도문화권).tiff
+ ┃ ┃ ┣ 📜dexp_fit(중부지역).tiff
+ ┃ ┃ ┣ 📜dexp_fit(한강중류).tiff
+ ┃ ┃ ┣ 📜dexp_fit(한강하류).tiff
+ ┃ ┃ ┣ 📜dexp_HPD(한강중류).tiff
+ ┃ ┃ ┣ 📜dexp_HPD(한강하류).tiff
+ ┃ ┃ ┣ 📜dexp_model(한강중류).tiff
+ ┃ ┃ ┣ 📜dexp_model(한강하류).tiff
+ ┃ ┃ ┣ 📜SPD(경기남부+호서북부).tiff
+ ┃ ┃ ┣ 📜SPD(경기북부+영서).tiff
+ ┃ ┃ ┣ 📜SPD(마한문화권).tiff
+ ┃ ┃ ┣ 📜SPD(신라제외).tiff
+ ┃ ┃ ┣ 📜SPD(중도문화권).tiff
+ ┃ ┃ ┣ 📜SPD(한강중류).tiff
+ ┃ ┃ ┗ 📜SPD(한강하류).tiff
+ ┃ ┣ 📜Fig2-1_유적분포도.tiff
+ ┃ ┣ 📜Fig2-2(1)_방형주거지 면적 분산.tiff
+ ┃ ┣ 📜Fig2-2(2)_여철자형주거지 면적 분산.tiff
+ ┃ ┣ 📜Fig3-11_여주 연양리 7호 주거지 일괄.jpg
+ ┃ ┣ 📜Fig3-13_백제 한성기 편년 절대연대 부여자료.jpg
+ ┃ ┣ 📜Fig3-14(1)_주거지 개수(551안).tiff
+ ┃ ┣ 📜Fig3-14(2)_주거지 개수(551안 보정).tiff
+ ┃ ┣ 📜Fig3-1_중부지역 주거지 탄소연대 SPD.tiff
+ ┃ ┣ 📜Fig3-3(1)_dexp_HPD(중부지역).tiff
+ ┃ ┣ 📜Fig3-3(2)_dexp_HPD(신라제외).tiff
+ ┃ ┣ 📜Fig3-4(1)_dexp_model(중부지역).tiff
+ ┃ ┣ 📜Fig3-4(2)_dexp_model(신라제외).tiff
+ ┃ ┣ 📜Fig3-5(1)_dexp_HPD(마한문화권).tiff
+ ┃ ┣ 📜Fig3-5(2)_dexp_HPD(중도문화권).tiff
+ ┃ ┣ 📜Fig3-6(1)_dexp_model(마한문화권).tiff
+ ┃ ┣ 📜Fig3-6(2)_dexp_model(중도문화권).tiff
+ ┃ ┣ 📜Fig3-7(1)_dexp_HPD(경기북부+영서).tiff
+ ┃ ┣ 📜Fig3-7(2)_dexp_HPD(경기남부+호서북부).tiff
+ ┃ ┣ 📜Fig3-8(1)_dexp_model(경기북부+영서).tiff
+ ┃ ┣ 📜Fig3-8(2)_dexp_model(경기남부+호서북부).tiff
+ ┃ ┣ 📜Fig3-9_주거지 개수(475안).tiff
+ ┃ ┣ 📜Fig4-1_인구분포 변화.tiff
+ ┃ ┣ 📜Fig4-3_토기가마 분포와 인구분포.png
+ ┃ ┣ 📜Fig4-7_백제 전쟁 기록.tif
+ ┃ ┗ 📜Fig4-8_이형토기 출토 대형주거지.tif
  ┣ 📂Script
- ┃ ┣ 📂PithouseNum
- ┃ ┃ ┣ 📜PithouseNum(475_H&K2021).R
- ┃ ┃ ┣ 📜PithouseNum(551).R
- ┃ ┃ ┗ 📜PithouseNum(551_Fix).R
- ┃ ┣ 📂PithouseSize
- ┃ ┃ ┣ 📜PithouseSize_100.R
- ┃ ┃ ┣ 📜PithouseSize_50.R
- ┃ ┃ ┗ 📜PithouseSize_분산.R
- ┃ ┣ 📂SPD
- ┃ ┃ ┣ 📂By_All
- ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_중부지역).R
- ┃ ┃ ┃ ┗ 📜SPD(Pithouse_중부지역).R
- ┃ ┃ ┣ 📂By_Area
- ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_경기남부+호서북부).R
- ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_경기북부+영서).R
+ ┃ ┣ 📂NotUsed
+ ┃ ┃ ┣ 📂PithouseSize
+ ┃ ┃ ┃ ┣ 📜PithouseSize_100.R
+ ┃ ┃ ┃ ┗ 📜PithouseSize_50.R
+ ┃ ┃ ┗ 📂SPD
  ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_한강중류).R
  ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_한강하류).R
  ┃ ┃ ┃ ┣ 📜SPD(Pithouse_경기남부+호서북부).R
  ┃ ┃ ┃ ┣ 📜SPD(Pithouse_경기북부+영서).R
+ ┃ ┃ ┃ ┣ 📜SPD(Pithouse_마한문화권).R
+ ┃ ┃ ┃ ┣ 📜SPD(Pithouse_신라제외).R
+ ┃ ┃ ┃ ┣ 📜SPD(Pithouse_중도문화권).R
  ┃ ┃ ┃ ┣ 📜SPD(Pithouse_한강중류).R
  ┃ ┃ ┃ ┗ 📜SPD(Pithouse_한강하류).R
+ ┃ ┣ 📂PithouseNum
+ ┃ ┃ ┣ 📜Fig3-14(1)_주거지 개수(551안).R
+ ┃ ┃ ┣ 📜Fig3-14(2)_주거지 개수(551안 보정).R
+ ┃ ┃ ┗ 📜Fig3-9_주거지 개수(475안).R
+ ┃ ┣ 📂SPD
+ ┃ ┃ ┣ 📂By_All
+ ┃ ┃ ┃ ┣ 📜Fig3-1_SPD(중부지역).R
+ ┃ ┃ ┃ ┣ 📜Fig3-4~5_BaysianModel(신라제외).R
+ ┃ ┃ ┃ ┗ 📜Fig3-4~5_BaysianModel(중부지역).R
+ ┃ ┃ ┣ 📂By_Area
+ ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_경기남부+호서북부).R
+ ┃ ┃ ┃ ┗ 📜BaysianModel(dExp_model_경기북부+영서).R
  ┃ ┃ ┗ 📂By_Cultural
  ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_마한문화권).R
- ┃ ┃ ┃ ┣ 📜BaysianModel(dExp_model_중도문화권).R
- ┃ ┃ ┃ ┣ 📜SPD(Pithouse_마한문화권).R
- ┃ ┃ ┃ ┗ 📜SPD(Pithouse_중도문화권).R
- ┃ ┗ 📜Bakje_WarRecords.R
+ ┃ ┃ ┃ ┗ 📜BaysianModel(dExp_model_중도문화권).R
+ ┃ ┣ 📜Fig2-2_주거지 면적 분산.R
+ ┃ ┗ 📜Fig4-7_백제 전쟁 기록.R
  ┣ 📜.gitignore
  ┗ 📜README.md
 ```
