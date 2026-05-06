@@ -1,13 +1,13 @@
-<img src="https://user-images.githubusercontent.com/64909586/186408061-58a88e85-be08-47f2-b3b3-2c9e04a9dec6.png" height=65>
+<img src="https://github.com/user-attachments/assets/90f2b84c-4d70-4536-a097-417ca4528e37" height=65> <img src="https://user-images.githubusercontent.com/64909586/186408061-58a88e85-be08-47f2-b3b3-2c9e04a9dec6.png" height=65>
 
 # 원삼국시대~백제 한성기 중부지역의 인구변동과 배경
 
 ---
 
 ## 소개
-이 레포지토리는 ｢원삼국시대~백제 한성기 중부지역의 인구변동과 배경｣과 ｢원삼국시대~백제 한성기 중부지역의 인구변동: 주거지와 탄소연대측정치를 중심으로｣의 데이터, 그래프, 코드를 정리한 레포지토리입니다. 해당 논문은 아래에서 확인하실 수 있습니다.
+이 레포지토리는 아래의 논문들에 활용된 데이터, 그래프, 코드를 정리한 레포지토리입니다. 해당 논문은 아래에서 확인하실 수 있습니다. <br>
 
-[주찬혁, 2024, ｢원삼국시대~백제 한성기 중부지역의 인구변동과 배경｣, 숭실대학교 석사학위논문.](https://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=fe8e7f10a2a0b62bffe0bdc3ef48d419&keyword=%EC%A3%BC%EC%B0%AC%ED%98%81)
+[주찬혁, 2024, ｢원삼국시대~백제 한성기 중부지역의 인구변동과 배경｣, 숭실대학교 대학원 사학과 석사학위논문.](https://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=fe8e7f10a2a0b62bffe0bdc3ef48d419&keyword=%EC%A3%BC%EC%B0%AC%ED%98%81)
 <br>
 [주찬혁, 2025, ｢원삼국시대~백제 한성기 중부지역의 인구변동: 주거지와 탄소연대측정치를 중심으로｣, 『한국상고사학보』 129, 한국상고사학회.](
 https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003241756)
